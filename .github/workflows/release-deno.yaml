@@ -1,0 +1,48 @@
+name: Release Deno Package
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install --frozen-lockfile
+
+      - name: Build with denoify
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: denoify
+
+      - name: Zip deno_dist
+        run: zip -r solapi-deno.zip deno_dist
+
+      - name: Get Package Version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+
+      - name: Create Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: v${{ steps.package-version.outputs.current-version}}
+          name: Release ${{ steps.package-version.outputs.current-version}}
+          draft: false
+          prerelease: false
+          files: solapi-deno.zip
