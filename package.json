@@ -31,7 +31,8 @@
     "clean": "rimraf dist",
     "build": "yarn clean && parcel build --no-source-maps",
     "watch": "parcel watch",
-    "docs": "typedoc --entryPointStrategy expand ./src"
+    "docs": "typedoc --entryPointStrategy expand ./src",
+    "denoify": "denoify"
   },
   "engines": {
     "node": ">=14",
@@ -54,6 +55,7 @@
     "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
+    "denoify": "^1.6.16",
     "eslint": "^8.29.0",
     "eslint-plugin-tsdoc": "^0.2.17",
     "eslint-plugin-unused-imports": "^2.0.0",
@@ -66,5 +68,8 @@
   "files": [
     "/dist"
   ],
+  "denoify": {
+    "output": "deno_dist"
+  },
   "packageManager": "yarn@3.2.3"
 }

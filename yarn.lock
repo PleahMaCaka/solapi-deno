@@ -1706,6 +1706,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"denoify@npm:^1.6.16":
+  version: 1.6.16
+  resolution: "denoify@npm:1.6.16"
+  bin:
+    denoify: bin/main.js
+    enable_short_npm_import_path: bin/enable_short_npm_import_path.js
+    remove_deno_dist_from_gitignore: bin/remove_deno_dist_from_gitignore.js
+  checksum: d5a1bc8382c980b1f1700128318d732f94089da13bbd87a4d3b3c2eb5393292e607cd277249c08af5096d9b614abb42b1710c7b675b0c8fb26ba64a914da0aa3
+  languageName: node
+  linkType: hard
+
 "depd@npm:^1.1.2":
   version: 1.1.2
   resolution: "depd@npm:1.1.2"
@@ -3665,6 +3676,7 @@ __metadata:
     cross-fetch: ^3.1.5
     crypto-js: ^4.1.1
     date-fns: ^2.29.3
+    denoify: ^1.6.16
     eslint: ^8.29.0
     eslint-plugin-tsdoc: ^0.2.17
     eslint-plugin-unused-imports: ^2.0.0
